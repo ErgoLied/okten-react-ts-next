@@ -46,7 +46,7 @@ const Product: FC<IProductProps> = ({
 
             <div className={styles.images}>
                 {
-                    images.map(image => <img src={image} alt={title}/>)
+                    images.map((image, index) => <img key={index} src={image} alt={title}/>)
                 }
             </div>
         </div>
