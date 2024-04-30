@@ -1,0 +1,8 @@
+.logoImg {
+    img {
+        width: 60vw;
+    }
+
+    display: flex;
+    justify-content: center;
+}
