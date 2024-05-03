@@ -1,0 +1,26 @@
+.header{
+    font-size: 1rem;
+
+    span{
+        color: silver;
+        font-weight: normal;
+    }
+}
+
+.reactions{
+    background: url('https://img.icons8.com/ios-glyphs/90/filled-like.png') no-repeat center;
+    background-size: cover;
+    height: 24px;
+    width: 24px;
+}
+
+.tag{
+    background-color: #fff589;
+    border-radius: 3px;
+    padding: 2px;
+    margin: 2px;
+}
+
+.flex{
+    display: flex;
+}

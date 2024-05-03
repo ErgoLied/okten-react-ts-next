@@ -1,0 +1,38 @@
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 3px;
+    margin: 5px;
+}
+
+.flex{
+    display: flex;
+}
+
+.profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    width: 30vw;
+
+    p{
+        margin: 5px;
+    }
+
+    span{
+        color: silver;
+    }
+
+    a, a:hover, a:active, a:visited{
+        color: black;
+        font-size: 0.8rem;
+        margin: 5px;
+    }
+
+    button{
+        justify-self: flex-end;
+    }
+}

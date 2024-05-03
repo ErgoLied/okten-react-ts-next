@@ -1,6 +1,6 @@
 import axios, {AxiosResponse} from "axios";
-import {IPostModel} from "../models/IPostModel";
 import {IUserResponseModel} from "../models/IUserResponseModel";
+import {IPostResponseModel} from "../models/IPostResponseModel";
 
 const axiosInstance = axios.create({
     baseURL: 'https://dummyjson.com/users',
@@ -11,7 +11,7 @@ const getAllUsers = (): Promise<AxiosResponse<IUserResponseModel>> => {
     return axiosInstance.get('');
 }
 
-const getAllPostsByUserId = (userId: number): Promise<AxiosResponse<IPostModel[]>> => {
+const getAllPostsByUserId = (userId: number): Promise<AxiosResponse<IPostResponseModel>> => {
     return axiosInstance.get('/' + userId + '/posts');
 }
 
