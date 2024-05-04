@@ -2,7 +2,7 @@ import React, {FC, useEffect, useState} from 'react';
 
 import {IUserModel} from "../../models/IUserModel";
 import {getAllUsers} from "../../services/users.api.service";
-import User from "../user/User";
+import User from "../User/User";
 
 type IPropsType = { postsOfCurrentUser?: (userId: number) => void };
 

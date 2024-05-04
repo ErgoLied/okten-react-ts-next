@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 
 import {getAllPostsByUserId} from "./services/users.api.service";
 import {IPostModel} from "./models/IPostModel";
-import Users from "./components/users/Users";
-import Posts from "./components/posts/Posts";
+import Users from "./components/Users/Users";
+import Posts from "./components/Posts/Posts";
 
 import './App.css';
 
