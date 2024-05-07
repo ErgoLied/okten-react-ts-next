@@ -1,13 +1,29 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect, useState} from 'react';
+import {IProduct} from "../../models/ProductModel";
+import {getAllProducts} from "../../services/products.api.service";
+import {useStorage} from "../../customHooks/customHooks";
 
 const StorageComponent: FC = () => {
+    const [products, setProducts] = useState<IProduct[]>([]);
+    const [savedProducts, setSavedProducts] = useStorage<IProduct>('savedProducts', []);
+
+    useEffect(() => {
+        getAllProducts().then(value => setProducts([...value.products]));
+    }, []);
+
+    const saveProduct = (product: IProduct) => {
+        setSavedProducts([...savedProducts, product]);
+    };
+
     return (
         <div>
             <h2>Task #3: Store value in the browser's LocalStorage</h2>
-            <form action="">
-                <input type="text"/>
-                <button>Save</button>
-            </form>
+            {
+                !!products && products.map(product => <div key={product.id}>
+                    {product.id} - {product.title} - {product.price}
+                    <button onClick={() => saveProduct(product)}>save</button>
+                </div>)
+            }
         </div>
     );
 };
