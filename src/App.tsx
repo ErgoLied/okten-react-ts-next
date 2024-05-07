@@ -12,7 +12,7 @@ function App() {
     const [posts, setPosts] = useState<IPostModel[]>([]);
 
     const postsOfCurrentUser = (userId: number) => {
-        getAllPostsByUserId(userId).then(({data}) => setPosts(data.posts));
+        getAllPostsByUserId(userId).then(({data}) => setPosts([...data.posts]));
     }
 
     return (

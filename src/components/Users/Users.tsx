@@ -11,7 +11,7 @@ const Users: FC<IPropsType> = ({postsOfCurrentUser}) => {
     const [users, setUsers] = useState<IUserModel[]>([]);
 
     useEffect(() => {
-        getAllUsers().then(({data}) => setUsers(data.users));
+        getAllUsers().then(({data}) => setUsers([...data.users]));
     }, []);
 
     return (
