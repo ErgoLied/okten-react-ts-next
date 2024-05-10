@@ -1,3 +1,17 @@
+# Task:
+You need to create a simple application to display a list of users. Each user should have a name and an age. Also, each user should have a "Show More" button. When clicking on this button, additional information about the user should be displayed (for example, email or phone number). The additional information component should be implemented as a higher-order component.
+
+# Requirements:
+> Create a UserList component that displays the list of users. 
+
+> Create a UserDetails component that displays additional information about the user.
+
+> Use memo to optimize the rendering of UserList and UserDetails.
+
+> Use useMemo to compute complex calculations in UserDetails that do not depend on changes in input data.
+
+> Use useCallback to wrap event handlers in UserList.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
