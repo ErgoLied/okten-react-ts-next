@@ -1,7 +1,7 @@
 import React, {FC, useEffect, useState} from 'react';
 import {IProduct} from "../../models/ProductModel";
 import {getAllProducts} from "../../services/products.api.service";
-import {useStorage} from "../../customHooks/customHooks";
+import {useStorage} from "../../customHooks/useStorage";
 
 const StorageComponent: FC = () => {
     const [products, setProducts] = useState<IProduct[]>([]);
