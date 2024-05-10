@@ -1,10 +1,22 @@
 import {FC} from 'react';
 
-export const WithUserDetails = (Component: FC) => {
+type IProps = {
+    details: (userEmail: string, userPhone: string) => void;
+}
 
-    const WrapperComponent = (props: any) => {
+export const WithUserDetails = <T,>(Component: FC<T & IProps>) => {
+
+    const WrapperComponent: FC<T> = (props) => {
+
+        const details = (userEmail: string, userPhone: string) => {
+            return <div>
+                <p>{userEmail}</p>
+                <p>{userPhone}</p>
+            </div>
+        }
+
         return (
-            <Component {...props}/>
+            <Component {...props} details={details}/>
         )
     }
 
