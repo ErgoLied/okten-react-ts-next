@@ -8,10 +8,6 @@ You need to create a simple application to display a list of users. Each user sh
 
 > Use memo to optimize the rendering of UserList and UserDetails.
 
-> Use useMemo to compute complex calculations in UserDetails that do not depend on changes in input data.
-
-> Use useCallback to wrap event handlers in UserList.
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
