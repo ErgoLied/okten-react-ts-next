@@ -1,9 +1,10 @@
-import {FC, useEffect, useState} from 'react';
+import {FC, memo, useEffect, useState} from 'react';
 import {IUserModel} from "../../models/IUserModel";
 import {getAllUsers} from "../../services/users.api.service";
 import UserComponent from "../UserComponent/UserComponent";
 
-const UsersListComponent: FC = () => {
+const UsersListComponent: FC = memo(() => {
+    console.log('UsersList component')
 
     const [users, setUsers] = useState<IUserModel[]>([]);
 
@@ -18,6 +19,7 @@ const UsersListComponent: FC = () => {
             }
         </div>
     );
-};
+});
+
 
 export default UsersListComponent;

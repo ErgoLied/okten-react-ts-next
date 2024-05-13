@@ -1,23 +1,21 @@
 import {FC} from 'react';
+import {IUserModel} from "../models/IUserModel";
 
 type IProps = {
-    details: (userEmail: string, userPhone: string) => void;
+    user: IUserModel;
 }
+export const withUserDetails = (Component: FC<IProps>) => {
 
-export const WithUserDetails = <T,>(Component: FC<T & IProps>) => {
-
-    const WrapperComponent: FC<T> = (props) => {
-
-        const details = (userEmail: string, userPhone: string) => {
-            return <div>
-                <p>{userEmail}</p>
-                <p>{userPhone}</p>
-            </div>
-        }
+    const WrapperComponent: FC<IProps> = ({user}) => {
 
         return (
-            <Component {...props} details={details}/>
-        )
+            <div>
+                <Component user={user}/>
+                <p>email: {user.email}</p>
+                <p>phone: {user.phone}</p>
+                <hr/>
+            </div>
+        );
     }
 
     return WrapperComponent;
