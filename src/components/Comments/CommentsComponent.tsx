@@ -1,5 +1,4 @@
 import {useEffect, useState} from "react";
-import {IUserModel} from "../../models/IUserModel";
 import {apiService} from "../../services/api.service";
 import {ICommentModel} from "../../models/ICommentModel";
 
