@@ -1,8 +1,8 @@
+import './FooterComponent.module.css';
+
 const FooterComponent = () => {
     return (
-        <div>
-            Made by ErgoLied
-        </div>
+        <footer></footer>
     );
 };
 

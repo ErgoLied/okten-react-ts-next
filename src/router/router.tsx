@@ -11,7 +11,7 @@ export const routerConfig = createBrowserRouter([
         element: <MainLayout/>,
         errorElement: <div>error</div>,
         children: [
-            {index: true, element: <div>homepage</div>},
+            {index: true, element: <UsersComponent/>},
             {path: 'users', element: <UsersComponent/>},
             {path: 'posts', element: <PostsComponent/>},
             {path: 'comments', element: <CommentsComponent/>},

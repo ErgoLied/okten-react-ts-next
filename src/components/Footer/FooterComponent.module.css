@@ -1,0 +1,14 @@
+footer {
+    position: fixed;
+    bottom: 0;
+    border-top: 2px solid black;
+    width: 94vw;
+    height: 50px;
+    padding-top: 20px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.90);
+}
+footer:before{
+    content: 'Made by ErgoLied';
+}
