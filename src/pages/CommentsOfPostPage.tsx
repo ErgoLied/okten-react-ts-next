@@ -1,8 +1,9 @@
-import CommentsComponent from "../components/Comments/CommentsComponent";
-import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
+
+import CommentsComponent from "../components/Comments/CommentsComponent";
 import {ICommentModel} from "../models/ICommentModel";
-import {apiService} from "../services/api.service";
+import {commentService} from "../services/comment.api.service";
 
 const CommentsOfPostPage = () => {
     const {id} = useParams();
@@ -10,7 +11,7 @@ const CommentsOfPostPage = () => {
 
     useEffect(() => {
         if (id) {
-            apiService.getCommentsOfPost(id.toString()).then(({data}) => setComments(data));
+            commentService.getCommentsOfPost(id.toString()).then(({data}) => setComments(data));
         }
     }, [id]);
 

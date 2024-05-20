@@ -1,6 +1,7 @@
 import {FC} from "react";
-import {IUserModel} from "../../models/IUserModel";
 import {useLocation, useNavigate} from "react-router-dom";
+
+import {IUserModel} from "../../models/IUserModel";
 
 type IProps = {
     user: IUserModel;
@@ -11,7 +12,7 @@ const UserComponent: FC<IProps> = ({user}) => {
     const location = useLocation();
 
     return (
-        <div>
+        <div className={'item'}>
             {user.id} - {user.name}
             {location.pathname.startsWith('/users') &&
                 <button onClick={() => navigate(user.id.toString())}>posts</button>

@@ -1,13 +1,14 @@
-import CommentsComponent from "../components/Comments/CommentsComponent";
 import {useEffect, useState} from "react";
+
+import CommentsComponent from "../components/Comments/CommentsComponent";
 import {ICommentModel} from "../models/ICommentModel";
-import {apiService} from "../services/api.service";
+import {commentService} from "../services/comment.api.service";
 
 const CommentsPage = () => {
     const [comments, setComments] = useState<ICommentModel[]>([]);
 
     useEffect(() => {
-        apiService.getAllComments().then(({data}) => setComments(data));
+        commentService.getAllComments().then(({data}) => setComments(data));
     }, []);
 
     return (

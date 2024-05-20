@@ -12,7 +12,7 @@ const PostComponent: FC<IProps> = ({post}) => {
 
 
     return (
-        <div>
+        <div className={'item'}>
             {post.id} - {post.title}
             {!location.pathname.startsWith('/users') &&
                 <button onClick={() => navigate(post.id.toString())}>comments</button>

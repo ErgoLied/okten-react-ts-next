@@ -1,16 +1,26 @@
-.menu{
+.menu {
     margin-bottom: 20px;
     display: flex;
     gap: 20px;
 }
 
-a{
+a {
     text-decoration: none;
     color: black;
     font-weight: bold;
     padding: 5px;
 }
 
-a[class='active']{
+a[class='active'] {
     border: 1px solid black;
+    /*border-style: solid;*/
+    /*border-image: linear-gradient(*/
+    /*to right,*/
+    /*red 0%,*/
+    /*orange 14%,*/
+    /*yellow 28%,*/
+    /*greenyellow 42%,*/
+    /*deepskyblue 56%,*/
+    /*blue 70%,*/
+    /*rebeccapurple 100%) 1/2px;*/
 }

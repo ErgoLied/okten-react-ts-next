@@ -1,8 +1,9 @@
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
+
 import {IPostModel} from "../models/IPostModel";
-import {apiService} from "../services/api.service";
 import PostsComponent from "../components/Posts/PostsComponent";
+import {postService} from "../services/post.api.service";
 
 const PostsOfUserPage = () => {
 
@@ -11,7 +12,7 @@ const PostsOfUserPage = () => {
 
     useEffect(() => {
         if (id) {
-            apiService.getPostsOfUser(id).then(({data}) => setPosts(data))
+            postService.getPostsOfUser(id).then(({data}) => setPosts(data))
         }
     }, [id]);
 
