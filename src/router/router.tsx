@@ -1,9 +1,11 @@
 import {createBrowserRouter} from "react-router-dom";
 
 import MainLayout from "../layout/MainLayout";
-import UsersComponent from "../components/Users/UsersComponent";
-import PostsComponent from "../components/Posts/PostsComponent";
-import CommentsComponent from "../components/Comments/CommentsComponent";
+import UsersPage from "../pages/UsersPage";
+import PostsPage from "../pages/PostsPage";
+import CommentsPage from "../pages/CommentsPage";
+import PostsOfUserPage from "../pages/PostsOfUserPage";
+import CommentsOfPostPage from "../pages/CommentsOfPostPage";
 
 export const routerConfig = createBrowserRouter([
     {
@@ -11,10 +13,18 @@ export const routerConfig = createBrowserRouter([
         element: <MainLayout/>,
         errorElement: <div>error</div>,
         children: [
-            {index: true, element: <UsersComponent/>},
-            {path: 'users', element: <UsersComponent/>},
-            {path: 'posts', element: <PostsComponent/>},
-            {path: 'comments', element: <CommentsComponent/>},
+            {index: true, element: <UsersPage/>},
+            {
+                path: 'users', element: <UsersPage/>, children: [
+                    {path: ':id', element: <PostsOfUserPage/>}
+                ]
+            },
+            {
+                path: 'posts', element: <PostsPage/>, children: [
+                    {path: ':id', element: <CommentsOfPostPage/>}
+                ]
+            },
+            {path: 'comments', element: <CommentsPage/>},
         ]
     }
 ]);
