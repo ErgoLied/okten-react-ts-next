@@ -1,8 +1,10 @@
 const retriveLSData = <T, >(key: string) => {
     const pairJSON = localStorage.getItem(key) || '';
-    const pair = JSON.parse(pairJSON);
+    let pair;
 
-    if (!pairJSON) {
+    if (pairJSON) {
+        pair = JSON.parse(pairJSON);
+    } else {
         return {} as T;
     }
 
