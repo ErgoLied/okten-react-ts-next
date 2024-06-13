@@ -1,7 +1,9 @@
+import PostsCommentsComponent from "../components/PostsComments/PostsCommentsComponent";
+
 const PostsCommentsPage = () => {
     return (
         <div>
-            comments of posts
+            <PostsCommentsComponent/>
         </div>
     );
 };
