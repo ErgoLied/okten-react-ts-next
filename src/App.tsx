@@ -4,14 +4,18 @@ import {Outlet} from "react-router-dom";
 import {Context} from './context/ContextProvider';
 import {IUserModel} from "./models/IUserModel";
 import {IPostModel} from "./models/IPostModel";
-import {commentService, postService, userService} from "./services/api.service";
 import HeaderComponent from "./components/Header/HeaderComponent";
 import {ICommentModel} from "./models/ICommentModel";
+import {userService} from "./services/user.api.service";
+import {postService} from "./services/post.api.service";
+import {commentService} from "./services/comment.api.service";
+import FavouriteUserComponent from "./components/FavouriteUserComponent/FavouriteUserComponent";
 
 function App() {
     const [users, setUsers] = useState<IUserModel[]>([]);
     const [posts, setPosts] = useState<IPostModel[]>([]);
     const [comments, setComments] = useState<ICommentModel[]>([]);
+    const [favUserState, setFavUserState] = useState<IUserModel | null>(null);
 
     useEffect(() => {
         userService.getUsers().then(({data}) => setUsers(data));
@@ -19,12 +23,17 @@ function App() {
         commentService.getComments().then(({data}) => setComments(data));
     }, []);
 
+    const setFavouriteUser = (user: IUserModel) => {
+        setFavUserState(user);
+    }
+
     return (
         <>
             <HeaderComponent/>
             <Context.Provider value={{
                 userStore: {
-                    allUsers: users
+                    allUsers: users,
+                    setFavouriteUser: (user: IUserModel) => setFavouriteUser(user)
                 },
                 postStore: {
                     allPosts: posts
@@ -34,6 +43,7 @@ function App() {
                 }
             }}>
 
+                <FavouriteUserComponent user={favUserState}/>
                 <Outlet/>
 
             </Context.Provider>
