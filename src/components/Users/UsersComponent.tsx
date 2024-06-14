@@ -1,7 +1,12 @@
+import {useStore} from "../../zustand/StoreProvider";
+import UserComponent from "../User/UserComponent";
+
 const UsersComponent = () => {
+    const {userStore: {allUsers}} = useStore();
+
     return (
         <div>
-            UsersComponents
+            {allUsers.map(user=><UserComponent key={user.id} user={user}/>)}
         </div>
     );
 };

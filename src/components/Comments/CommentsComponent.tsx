@@ -1,7 +1,12 @@
+import {useStore} from "../../zustand/StoreProvider";
+import CommentComponent from "../Comment/CommentComponent";
+
 const CommentsComponent = () => {
+    const {commentStore: {allComments}} = useStore();
+
     return (
         <div>
-            CommentsComponent
+            {allComments.map(comment => <CommentComponent key={comment.id} comment={comment}/>)}
         </div>
     );
 };
