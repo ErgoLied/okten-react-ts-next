@@ -7,15 +7,17 @@ type UserSliceType = {
     users: IUser[];
     user: IUser | null;
     isLoaded: boolean;
+    error: string | null;
 }
 
 const userInitState: UserSliceType = {
     users: [],
     user: null,
-    isLoaded: false
+    isLoaded: false,
+    error: null
 }
 
-const loadUsers = createAsyncThunk(
+const loadUsers = createAsyncThunk<IUser[], void, { rejectValue: string }>(
     'userSlice/loadUsers',
     async (_, thunkAPI) => {  // thunkAPI give results to actions in addCases
         try {
@@ -24,21 +26,22 @@ const loadUsers = createAsyncThunk(
             return thunkAPI.fulfillWithValue(users);
         } catch (e) {
             const error = e as AxiosError;
-            return thunkAPI.rejectWithValue(error.response?.data);
+            return thunkAPI.rejectWithValue(JSON.stringify(error.response?.data) || 'unknown error');
         }
     }
 );
 
-const loadUserByID = createAsyncThunk(
+const loadUserByID = createAsyncThunk<IUser | null, string | undefined, { rejectValue: string }>(
     'userSlice/loadUserByID',
     async (id: string | undefined, thunkAPI) => {
         if (id) {
             try {
                 const user = await userService.getByID(id);
+                thunkAPI.dispatch(userActions.changeLoadState(true));
                 return thunkAPI.fulfillWithValue(user);
             } catch (e) {
                 const error = e as AxiosError;
-                return thunkAPI.rejectWithValue(error.response?.data);
+                return thunkAPI.rejectWithValue(JSON.stringify(error.response?.data) || 'unknown error');
             }
         }
         return null;
@@ -62,8 +65,8 @@ export const userSlice = createSlice({
                 })
             .addCase(
                 loadUsers.rejected,
-                (state, action) => {
-
+                (state, action: PayloadAction<string | undefined>) => {
+                    state.error = action.payload || 'unknown error';
                 }
             )
             .addCase(
@@ -74,8 +77,8 @@ export const userSlice = createSlice({
             )
             .addCase(
                 loadUserByID.rejected,
-                (state, action) => {
-
+                (state, action: PayloadAction<string | undefined>) => {
+                    state.error = action.payload || 'unknown error';
                 }
             )
             .addMatcher(
@@ -85,8 +88,8 @@ export const userSlice = createSlice({
                 })
             .addMatcher(
                 isRejected(loadUsers, loadUserByID),
-                (state, action) => {
-
+                (state, action: PayloadAction<string | undefined>) => {
+                    state.error = action.payload || 'unknown error';
                 }
             )
 });
